@@ -93,6 +93,12 @@ taskForm.addEventListener('submit', (e) => {
         alert('Ya existe una tarea con ese nombre.');
         return;
     }
+    
+    // Confirmación antes de añadir
+    const confirmed = confirm(`¿Seguro que quieres añadir la tarea "${name}"?`);
+    if (!confirmed) {
+        return;
+    }
 
     // Crear tarea y actualizar la lista
     const task = new Task(name);
