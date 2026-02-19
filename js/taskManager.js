@@ -17,6 +17,17 @@ class TaskManager {
             this.addTask(new Task("Comprar leche"));
             this.addTask(new Task("Estudiar JavaScript"));
             this.addTask(new Task("Hacer ejercicio"));
+            this.addTask(new Task("Leer un libro"));
+            this.addTask(new Task("Llamar a mamá"));
+            this.addTask(new Task("Organizar el escritorio"));
+            this.addTask(new Task("Planificar el fin de semana"));
+            this.addTask(new Task("Aprender algo nuevo"));
+            this.addTask(new Task("Escribir un diario"));
+            this.addTask(new Task("Meditar por 10 minutos"));
+            this.addTask(new Task("Limpiar la casa"));
+            this.addTask(new Task("Preparar la cena"));
+            this.addTask(new Task("Hacer la compra"));
+            this.addTask(new Task("Pagar las deudas"));
         }
     }
 
