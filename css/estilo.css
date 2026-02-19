@@ -1,0 +1,149 @@
+/* ================================
+   Estilo general de la página
+   ================================ */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #f0f4f8, #d9e2ec);
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #1f3a93;
+    font-size: 2.2em;
+    margin-bottom: 30px;
+}
+
+/* ================================
+   Formulario de tareas
+   ================================ */
+form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+form input[type="text"] {
+    padding: 12px;
+    width: 350px;
+    border: none;
+    outline: none;
+    font-size: 1em;
+}
+
+form button {
+    padding: 12px 20px;
+    border: none;
+    background-color: #0077cc;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+form button:hover {
+    background-color: #005fa3;
+    transform: scale(1.05);
+}
+
+/* ================================
+   Campo de búsqueda
+   ================================ */
+#searchTask {
+    display: block;
+    margin: 0 auto 30px auto;
+    padding: 12px;
+    width: 350px; /* Igual que el input del formulario */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+    font-size: 1em;
+    transition: all 0.3s ease;
+}
+
+#searchTask:focus {
+    border-color: #0077cc;
+    box-shadow: 0 0 5px rgba(0,119,204,0.5);
+}
+
+/* ================================
+   Lista de tareas
+   ================================ */
+ul {
+    list-style: none;
+    padding: 0;
+    max-width: 550px;
+    margin: 0 auto;
+}
+
+li {
+    background-color: #ffffff;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+}
+
+li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+}
+
+/* ================================
+   Contenedor del texto y botones
+   ================================ */
+.task-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.task-name {
+    flex: 1;               /* Ocupa todo el espacio disponible */
+    font-size: 1em;
+    word-break: break-word; /* Para nombres largos */
+    margin-right: 10px;
+}
+
+/* ================================
+   Botones de editar y eliminar
+   ================================ */
+.task-buttons {
+    display: flex;
+    gap: 5px; /* Espacio entre botones */
+}
+
+li button {
+    padding: 8px 16px;       /* Mismo tamaño para todos los botones */
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95em;
+    transition: all 0.3s ease;
+}
+
+li button:first-of-type { /* Editar */
+    background-color: #f39c12;
+    color: white;
+}
+
+li button:last-of-type { /* Eliminar */
+    background-color: #e74c3c;
+    color: white;
+}
+
+li button:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
