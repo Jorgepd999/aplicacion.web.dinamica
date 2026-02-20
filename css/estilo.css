@@ -154,3 +154,20 @@ body.dark-mode {
     color: #f5f5f5;
 }
 
+/* Tareas en modo oscuro */
+body.dark-mode li {
+    background-color: #1e1e1e; /* fondo oscuro para la tarea */
+    color: #f5f5f5;           /* texto claro */
+    box-shadow: 0 4px 12px rgba(255,255,255,0.05); /* sombra suave en oscuro */
+}
+
+/* Botones dentro de las tareas (opcional, si quieres que se vean mejor) */
+body.dark-mode li button:first-of-type { /* Editar */
+    background-color: #f39c12;
+    color: white;
+}
+
+body.dark-mode li button:last-of-type { /* Eliminar */
+    background-color: #e74c3c;
+    color: white;
+}
