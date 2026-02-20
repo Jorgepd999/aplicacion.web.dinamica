@@ -7,6 +7,8 @@ const listaTareas = document.getElementById('listaTareas');
 const nombreTareaInput = document.getElementById('nombreTarea');
 const buscarTareaInput = document.getElementById('buscarTarea');
 
+
+
 // Función para mostrar las tareas en pantalla
 function mostrarTareas(tareas) {
     listaTareas.innerHTML = ''; // Limpiar lista antes de mostrar
