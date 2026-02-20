@@ -5,29 +5,33 @@
     <meta charset="UTF-8">
     <title>AWDG - Gestión de Tareas</title>
     <link rel="stylesheet" href="css/estilo.css">
-
 </head>
 
 <body>
-    <h1>Gestión de Tareas</h1>
-    <button id="toggleTheme">Modo Oscuro</button>
+    <!-- Contenedor principal -->
+    <div class="header">
+        <h1>Gestión de Tareas</h1>
 
-    <!-- Formulario para crear nuevas tareas -->
-    <form id="taskForm">
-        <input type="text" id="taskName" placeholder="Nombre de la tarea" required>
+        <!-- Botón para cambiar entre modo oscuro y claro -->
+        <button id="botonModo">Modo Oscuro</button>
+    </div>
+
+    <!-- Formulario para añadir tareas -->
+    <form id="formularioTarea">
+        <input type="text" id="nombreTarea" placeholder="Nombre de la tarea" required>
         <button type="submit">Añadir Tarea</button>
     </form>
 
-    <!-- Campo para buscar tareas -->
-    <input type="text" id="searchTask" placeholder="Buscar tarea">
+    <!-- Campo para buscar tareas (debajo del formulario) -->
+    <input type="text" id="buscarTarea" placeholder="Buscar tarea">
 
     <!-- Lista de tareas -->
-    <ul id="taskList"></ul>
+    <ul id="listaTareas"></ul>
 
-    <!-- Importar scripts -->
-    <script src="js/taskManager.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/modoVista.js"></script>
+    <!-- Scripts -->
+    <script src="js/gestorTareas.js"></script>
+    <script src="js/interfazTareas.js"></script>
+    <script src="js/modoOscuro.js"></script>
 </body>
 
 </html>

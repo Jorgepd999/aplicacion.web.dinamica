@@ -7,22 +7,58 @@ body {
     color: #333;
     margin: 0;
     padding: 20px;
+    text-align: center; /* Para centrar título y elementos del body */
 }
 
 h1 {
-    text-align: center;
-    color: #1f3a93;
     font-size: 2.2em;
-    margin-bottom: 30px;
+    color: #1f3a93;
+    margin: 0 0 20px 0; /* Margen inferior para separar del header */
 }
 
 /* ================================
-   Formulario de tareas
+   Header: título y botón modo
+   ================================ */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Botón modo oscuro lateral */
+#botonModo {
+    padding: 10px 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    background: linear-gradient(45deg, #ff7e5f, #feb47b);
+    color: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+#botonModo:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+}
+
+#botonModo:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* ================================
+   Formulario de añadir tareas
    ================================ */
 form {
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     border-radius: 8px;
     overflow: hidden;
@@ -54,22 +90,21 @@ form button:hover {
 /* ================================
    Campo de búsqueda
    ================================ */
-#searchTask {
+#buscarTarea {
     display: block;
     margin: 0 auto 30px auto;
     padding: 12px;
-    width: 350px; /* Igual que el input del formulario */
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    width: 350px;
+    border: none; /* Quitamos borde para que coincida con el estilo oscuro */
+    border-radius: 10px;
     outline: none;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
     font-size: 1em;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* Mismo estilo que li */
     transition: all 0.3s ease;
 }
 
-#searchTask:focus {
-    border-color: #0077cc;
-    box-shadow: 0 0 5px rgba(0,119,204,0.5);
+#buscarTarea:focus {
+    box-shadow: 0 6px 15px rgba(0,0,0,0.12);
 }
 
 /* ================================
@@ -100,32 +135,10 @@ li:hover {
 }
 
 /* ================================
-   Contenedor del texto y botones
-   ================================ */
-.task-content {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    justify-content: space-between;
-}
-
-.task-name {
-    flex: 1;               /* Ocupa todo el espacio disponible */
-    font-size: 1em;
-    word-break: break-word; /* Para nombres largos */
-    margin-right: 10px;
-}
-
-/* ================================
    Botones de editar y eliminar
    ================================ */
-.task-buttons {
-    display: flex;
-    gap: 5px; /* Espacio entre botones */
-}
-
 li button {
-    padding: 8px 16px;       /* Mismo tamaño para todos los botones */
+    padding: 8px 16px;
     border: none;
     border-radius: 6px;
     cursor: pointer;
@@ -133,12 +146,12 @@ li button {
     transition: all 0.3s ease;
 }
 
-li button:first-of-type { /* Editar */
+li button:first-of-type {
     background-color: #f39c12;
     color: white;
 }
 
-li button:last-of-type { /* Eliminar */
+li button:last-of-type {
     background-color: #e74c3c;
     color: white;
 }
@@ -148,26 +161,23 @@ li button:hover {
     opacity: 0.9;
 }
 
-/* Modo oscuro simple */
+/* ================================
+   Modo oscuro
+   ================================ */
 body.dark-mode {
     background: #121212;
     color: #f5f5f5;
 }
 
-/* Tareas en modo oscuro */
-body.dark-mode li {
-    background-color: #1e1e1e; /* fondo oscuro para la tarea */
-    color: #f5f5f5;           /* texto claro */
-    box-shadow: 0 4px 12px rgba(255,255,255,0.05); /* sombra suave en oscuro */
+/* Tareas y inputs en modo oscuro */
+body.dark-mode li,
+body.dark-mode #nombreTarea,
+body.dark-mode #buscarTarea {
+    background-color: #1e1e1e;
+    color: #f5f5f5;
+    box-shadow: 0 4px 12px rgba(255,255,255,0.05);
 }
 
-/* Botones dentro de las tareas (opcional, si quieres que se vean mejor) */
-body.dark-mode li button:first-of-type { /* Editar */
-    background-color: #f39c12;
-    color: white;
-}
-
-body.dark-mode li button:last-of-type { /* Eliminar */
-    background-color: #e74c3c;
-    color: white;
-}
+/* Botones dentro de tareas en modo oscuro */
+body.dark-mode li button:first-of-type { background-color: #f39c12; color: white; }
+body.dark-mode li button:last-of-type { background-color: #e74c3c; color: white; }
