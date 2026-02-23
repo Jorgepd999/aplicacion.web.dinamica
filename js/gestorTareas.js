@@ -19,7 +19,7 @@ class GestorTareas {
             this.agregarTarea(new Tarea("Estudiar JavaScript"));
             this.agregarTarea(new Tarea("Hacer ejercicio"));
             this.agregarTarea(new Tarea("Terminar proyecto de clase"));
-                        this.agregarTarea(new Tarea("Estudiar para el examen"));
+            this.agregarTarea(new Tarea("Estudiar para el examen"));
 
 
         }
