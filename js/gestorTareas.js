@@ -15,9 +15,13 @@ class GestorTareas {
 
         // Si no hay tareas guardadas, añadimos algunas de ejemplo
         if (this.tareas.length === 0) {
-            this.agregarTarea(new Tarea("Comprar leche"));
+            this.agregarTarea(new Tarea("Hacer la compra"));
             this.agregarTarea(new Tarea("Estudiar JavaScript"));
             this.agregarTarea(new Tarea("Hacer ejercicio"));
+            this.agregarTarea(new Tarea("Terminar proyecto de clase"));
+                        this.agregarTarea(new Tarea("Estudiar para el examen"));
+
+
         }
     }
 
