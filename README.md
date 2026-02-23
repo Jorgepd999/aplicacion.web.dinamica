@@ -38,8 +38,9 @@ ProyectoAWDG/
 ├── css/
 │   └── estilo.css
 ├── js/
-│   ├── taskManager.js
-│   └── app.js
+│   ├── gestorTareas.js
+│   └── interfazTareas.js 
+│   └── modoOscuro.js
 └── README.md
 ```
 
