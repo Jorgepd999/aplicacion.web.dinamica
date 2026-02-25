@@ -162,6 +162,35 @@ li button:hover {
 }
 
 /* ================================
+   Botón exportar JSON
+   ================================ */
+.boton-exportar {
+    padding: 12px 25px;
+    font-weight: bold;
+    font-size: 1em;
+    background: linear-gradient(45deg, #6a11cb, #2575fc); /* degradado llamativo */
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+    margin: 10px auto;
+    display: block; /* centrar en la página */
+}
+
+.boton-exportar:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+    opacity: 0.9;
+}
+
+.boton-exportar:active {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* ================================
    Modo oscuro
    ================================ */
 body.dark-mode {

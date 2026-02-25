@@ -13,8 +13,10 @@ const buscarTareaInput = document.getElementById('buscarTarea');
 // ============================
 const botonExportar = document.createElement('button');
 botonExportar.textContent = "Exportar tareas";
-botonExportar.style.margin = "10px";
+botonExportar.classList.add('boton-exportar'); // <-- clase única
 botonExportar.onclick = () => {
+    const confirmado = confirm(`¿Seguro que quieres exportar las tareas a JSON?`);
+    if(confirmado){
     const dataStr = JSON.stringify(gestor.tareas, null, 2); // Convertir tareas a JSON bonito
     const blob = new Blob([dataStr], { type: "application/json" });
     const url = URL.createObjectURL(blob);
@@ -24,6 +26,7 @@ botonExportar.onclick = () => {
     a.download = "tareas.json"; // Nombre del archivo
     a.click();
     URL.revokeObjectURL(url); // Liberar memoria
+    }
 };
 document.body.insertBefore(botonExportar, listaTareas); // Insertamos arriba de la lista
 
