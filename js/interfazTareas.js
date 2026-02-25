@@ -8,6 +8,27 @@ const nombreTareaInput = document.getElementById('nombreTarea');
 const buscarTareaInput = document.getElementById('buscarTarea');
 
 
+// ============================
+// Crear botón de exportar JSON
+// ============================
+const botonExportar = document.createElement('button');
+botonExportar.textContent = "Exportar tareas";
+botonExportar.style.margin = "10px";
+botonExportar.onclick = () => {
+    const dataStr = JSON.stringify(gestor.tareas, null, 2); // Convertir tareas a JSON bonito
+    const blob = new Blob([dataStr], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "tareas.json"; // Nombre del archivo
+    a.click();
+    URL.revokeObjectURL(url); // Liberar memoria
+};
+document.body.insertBefore(botonExportar, listaTareas); // Insertamos arriba de la lista
+
+
+
 
 // Función para mostrar las tareas en pantalla
 function mostrarTareas(tareas) {
@@ -16,6 +37,14 @@ function mostrarTareas(tareas) {
     tareas.forEach(tarea => {
         const li = document.createElement('li');
         li.textContent = tarea.nombre;
+
+        // ============================
+        // Animación de aparición de tareas
+        // ============================
+        li.style.opacity = 0; 
+        li.style.transition = "opacity 0.5s ease";
+        setTimeout(() => { li.style.opacity = 1; }, 50);
+
 
         // Botón de editar
         const botonEditar = document.createElement('button');
