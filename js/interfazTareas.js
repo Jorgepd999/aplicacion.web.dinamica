@@ -49,9 +49,13 @@ function mostrarTareas(tareas) {
             }
         };
 
-        // Añadir botones al <li>
-        li.appendChild(botonEditar);
-        li.appendChild(botonEliminar);
+        // Contenedor de botones (alineados a la derecha)
+        const contenedorBotones = document.createElement('div');
+        contenedorBotones.classList.add('acciones-tarea');
+        contenedorBotones.appendChild(botonEditar);
+        contenedorBotones.appendChild(botonEliminar);
+
+        li.appendChild(contenedorBotones);
         listaTareas.appendChild(li);
     });
 }

@@ -181,3 +181,11 @@ body.dark-mode #buscarTarea {
 /* Botones dentro de tareas en modo oscuro */
 body.dark-mode li button:first-of-type { background-color: #f39c12; color: white; }
 body.dark-mode li button:last-of-type { background-color: #e74c3c; color: white; }
+
+/* Contenedor de acciones de cada tarea */
+.acciones-tarea {
+  display: flex;
+  justify-content: flex-end; /* Empuja los botones a la derecha */
+  align-items: center;       /* Centra verticalmente con el texto */
+  gap: 0.5rem;               /* Espacio entre botones */
+}
