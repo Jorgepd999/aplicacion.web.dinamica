@@ -14,18 +14,26 @@ const buscarTareaInput = document.getElementById('buscarTarea');
 const botonExportar = document.createElement('button');
 botonExportar.textContent = "Exportar tareas";
 botonExportar.classList.add('boton-exportar'); // <-- clase única
+
+// ============================
+// Animación de aparición de boton exportar tareas
+// ============================
+botonExportar.style.opacity = 0;
+botonExportar.style.transition = "opacity 0.5s ease";
+setTimeout(() => { botonExportar.style.opacity = 1; }, 50);
+
 botonExportar.onclick = () => {
     const confirmado = confirm(`¿Seguro que quieres exportar las tareas a JSON?`);
-    if(confirmado){
-    const dataStr = JSON.stringify(gestor.tareas, null, 2); // Convertir tareas a JSON bonito
-    const blob = new Blob([dataStr], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
+    if (confirmado) {
+        const dataStr = JSON.stringify(gestor.tareas, null, 2); // Convertir tareas a JSON bonito
+        const blob = new Blob([dataStr], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
 
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "tareas.json"; // Nombre del archivo
-    a.click();
-    URL.revokeObjectURL(url); // Liberar memoria
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "tareas.json"; // Nombre del archivo
+        a.click();
+        URL.revokeObjectURL(url); // Liberar memoria
     }
 };
 document.body.insertBefore(botonExportar, listaTareas); // Insertamos arriba de la lista
@@ -44,7 +52,7 @@ function mostrarTareas(tareas) {
         // ============================
         // Animación de aparición de tareas
         // ============================
-        li.style.opacity = 0; 
+        li.style.opacity = 0;
         li.style.transition = "opacity 0.5s ease";
         setTimeout(() => { li.style.opacity = 1; }, 50);
 
