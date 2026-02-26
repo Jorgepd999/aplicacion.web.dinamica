@@ -1,38 +1,89 @@
 <!DOCTYPE html>
+<!-- Declaración del tipo de documento: HTML5 -->
 <html lang="es">
+<!-- El atributo lang="es" indica que el idioma principal es español -->
 
 <head>
+    <!-- Codificación de caracteres (permite tildes, ñ, etc.) -->
     <meta charset="UTF-8">
+
+    <!-- Título que aparece en la pestaña del navegador -->
     <title>AWDG - Gestión de Tareas</title>
+
+    <!-- Enlace al archivo CSS externo donde están los estilos -->
     <link rel="stylesheet" href="css/estilo.css">
 </head>
 
 <body>
-    <!-- Contenedor principal -->
+
+    <!-- ========================= -->
+    <!-- CONTENEDOR SUPERIOR -->
+    <!-- ========================= -->
     <div class="header">
+
+        <!-- Título principal de la aplicación -->
         <h1>Gestión de Tareas</h1>
 
-        <!-- Botón para cambiar entre modo oscuro y claro -->
+        <!-- Botón para alternar entre modo oscuro y modo claro -->
+        <!-- Será controlado mediante JavaScript -->
         <button id="botonModo">Modo Oscuro</button>
     </div>
 
-    <!-- Formulario para añadir tareas -->
+
+    <!-- ========================= -->
+    <!-- FORMULARIO PARA AÑADIR TAREAS -->
+    <!-- ========================= -->
     <form id="formularioTarea">
-        <input type="text" id="nombreTarea" placeholder="Nombre de la tarea" required>
+
+        <!-- Campo de texto donde el usuario escribe el nombre de la tarea -->
+        <!-- required obliga a que no esté vacío -->
+        <input 
+            type="text" 
+            id="nombreTarea" 
+            placeholder="Nombre de la tarea" 
+            required
+        >
+
+        <!-- Botón para enviar el formulario -->
+        <!-- type="submit" activa el evento submit en JavaScript -->
         <button type="submit">Añadir Tarea</button>
     </form>
 
-    <!-- Campo para buscar tareas (debajo del formulario) -->
-    <input type="text" id="buscarTarea" placeholder="Buscar tarea">
+
+    <!-- ========================= -->
+    <!-- CAMPO DE BÚSQUEDA -->
+    <!-- ========================= -->
+
+    <!-- Input para filtrar tareas en tiempo real -->
+    <!-- Se controla con un evento 'input' en JavaScript -->
+    <input 
+        type="text" 
+        id="buscarTarea" 
+        placeholder="Buscar tarea"
+    >
     
 
-    <!-- Lista de tareas -->
+    <!-- ========================= -->
+    <!-- LISTA DE TAREAS -->
+    <!-- ========================= -->
+
+    <!-- Aquí se insertarán dinámicamente las tareas -->
+    <!-- JavaScript añadirá elementos <li> dentro de este <ul> -->
     <ul id="listaTareas"></ul>
 
-    <!-- Scripts -->
-    <script src="js/gestorTareas.js"></script>
-    <script src="js/interfazTareas.js"></script>
-    <script src="js/modoOscuro.js"></script>
-</body>
 
+    <!-- ========================= -->
+    <!-- SCRIPTS JAVASCRIPT -->
+    <!-- ========================= -->
+
+    <!-- Lógica de las clases Tarea y GestorTareas -->
+    <script src="js/gestorTareas.js"></script>
+
+    <!-- Lógica de la interfaz (mostrar tareas, botones, eventos) -->
+    <script src="js/interfazTareas.js"></script>
+
+    <!-- Funcionalidad del modo oscuro -->
+    <script src="js/modoOscuro.js"></script>
+
+</body>
 </html>

@@ -1,109 +1,198 @@
+// ============================
+// CLASE TAREA
+// ============================
+
 // Clase que representa una tarea individual
 class Tarea {
+
     constructor(nombre) {
-        this.id = Date.now() + Math.random(); // Genera un ID único combinando timestamp y número aleatorio
-        this.nombre = nombre;                 // Nombre de la tarea
+
+        // Genera un ID único combinando:
+        // - Date.now() → milisegundos actuales (timestamp)
+        // - Math.random() → número decimal aleatorio
+        // Esto reduce muchísimo la probabilidad de IDs duplicados
+        this.id = Date.now() + Math.random();
+
+        // Nombre descriptivo de la tarea
+        this.nombre = nombre;
     }
 }
 
+
+
+// ============================
+// CLASE GESTOR DE TAREAS
+// ============================
+
 // Clase que gestiona todas las tareas
 class GestorTareas {
-    constructor() {
-        this.tareas = [];             // Array donde guardamos todas las tareas
-        this.nombresTareas = new Set(); // Set para controlar nombres únicos y evitar duplicados
-        this.cargarTareas();          // Cargar tareas guardadas en localStorage
 
-        // Si no hay tareas guardadas, añadimos algunas de ejemplo
+    constructor() {
+
+        // Array principal donde se almacenan todas las tareas
+        this.tareas = [];
+
+        // Set para controlar nombres únicos (evita duplicados de forma eficiente)
+        // Guardamos los nombres en minúsculas para evitar problemas de mayúsculas/minúsculas
+        this.nombresTareas = new Set();
+
+        // Intentamos cargar tareas guardadas en localStorage
+        this.cargarTareas();
+
+        // Si no hay tareas guardadas, creamos tareas de ejemplo
         if (this.tareas.length === 0) {
             this.agregarTarea(new Tarea("Hacer la compra"));
             this.agregarTarea(new Tarea("Estudiar JavaScript"));
             this.agregarTarea(new Tarea("Hacer ejercicio"));
             this.agregarTarea(new Tarea("Terminar proyecto de clase"));
             this.agregarTarea(new Tarea("Estudiar para el examen"));
-
-
         }
     }
 
+
+
     // =========================
-    // Añadir una tarea
+    // AÑADIR UNA TAREA
     // =========================
+
     agregarTarea(tarea) {
-        // Comprobamos si el nombre ya existe en el Set (evita duplicados)
+
+        // Comprobamos si el nombre ya existe en el Set
+        // Convertimos a minúsculas para evitar duplicados tipo:
+        // "Tarea" y "tarea"
         if (this.nombresTareas.has(tarea.nombre.toLowerCase())) {
             alert("Ya existe una tarea con ese nombre.");
-            return; // No añadir tarea duplicada
+            return; // Cancelamos si es duplicado
         }
 
-        this.tareas.push(tarea);                       // Añadimos la tarea al array
-        this.nombresTareas.add(tarea.nombre.toLowerCase()); // Añadimos el nombre al Set
-        this.guardarTareas();                          // Guardamos en localStorage
+        // Añadimos la tarea al array principal
+        this.tareas.push(tarea);
+
+        // Guardamos el nombre en el Set para control futuro
+        this.nombresTareas.add(tarea.nombre.toLowerCase());
+
+        // Guardamos cambios en localStorage
+        this.guardarTareas();
     }
 
+
+
     // =========================
-    // Eliminar una tarea por ID
+    // ELIMINAR UNA TAREA POR ID
     // =========================
+
     eliminarTarea(id) {
-        // Buscar la tarea que vamos a eliminar para quitar su nombre del Set
+
+        // Buscamos primero la tarea que vamos a eliminar
+        // para quitar su nombre del Set
         const tareaEliminar = this.tareas.find(t => t.id === id);
+
         if (tareaEliminar) {
-            this.nombresTareas.delete(tareaEliminar.nombre.toLowerCase()); // Quitar del Set
+            // Eliminamos su nombre del Set
+            this.nombresTareas.delete(tareaEliminar.nombre.toLowerCase());
         }
 
-        // Filtrar el array para eliminar la tarea
+        // Creamos un nuevo array excluyendo la tarea con ese ID
         this.tareas = this.tareas.filter(t => t.id !== id);
-        this.guardarTareas(); // Guardar cambios en localStorage
+
+        // Guardamos cambios en localStorage
+        this.guardarTareas();
     }
 
+
+
     // =========================
-    // Editar una tarea por ID
+    // EDITAR UNA TAREA POR ID
     // =========================
+
     editarTarea(id, nuevoNombre) {
+
+        // Buscar la tarea por ID
         const tarea = this.tareas.find(t => t.id === id);
+
         if (tarea) {
-            // Comprobamos si el nuevo nombre ya existe (y no es el mismo que la tarea actual)
-            if (this.nombresTareas.has(nuevoNombre.toLowerCase()) && tarea.nombre.toLowerCase() !== nuevoNombre.toLowerCase()) {
+
+            // Verificamos si el nuevo nombre ya existe
+            // (y que no sea el mismo nombre actual)
+            if (
+                this.nombresTareas.has(nuevoNombre.toLowerCase()) &&
+                tarea.nombre.toLowerCase() !== nuevoNombre.toLowerCase()
+            ) {
                 alert("Ya existe otra tarea con ese nombre.");
-                return;
+                return; // Cancelar edición
             }
 
-            // Actualizamos el Set: quitamos el antiguo nombre y añadimos el nuevo
+            // Actualizamos el Set:
+            // 1. Quitamos el nombre antiguo
             this.nombresTareas.delete(tarea.nombre.toLowerCase());
+
+            // 2. Añadimos el nuevo nombre
             this.nombresTareas.add(nuevoNombre.toLowerCase());
 
-            // Cambiamos el nombre de la tarea
+            // Cambiamos el nombre en el objeto tarea
             tarea.nombre = nuevoNombre;
 
-            this.guardarTareas(); // Guardar cambios en localStorage
+            // Guardamos cambios
+            this.guardarTareas();
         }
     }
 
-    // =========================
-    // Buscar tareas por texto
-    // =========================
-    buscarTareas(consulta) {
-        // Filtramos el array buscando coincidencias ignorando mayúsculas/minúsculas
-        return this.tareas.filter(t => t.nombre.toLowerCase().includes(consulta.toLowerCase()));
-    }
+
 
     // =========================
-    // Guardar tareas en localStorage
+    // BUSCAR TAREAS POR TEXTO
     // =========================
+
+    buscarTareas(consulta) {
+
+        // Filtramos el array devolviendo solo las tareas
+        // cuyo nombre incluya el texto buscado
+        // .includes() permite coincidencias parciales
+        // Convertimos todo a minúsculas para búsqueda insensible a mayúsculas
+        return this.tareas.filter(t =>
+            t.nombre.toLowerCase().includes(consulta.toLowerCase())
+        );
+    }
+
+
+
+    // =========================
+    // GUARDAR EN LOCALSTORAGE
+    // =========================
+
     guardarTareas() {
+
+        // Convertimos el array de tareas a JSON
+        // y lo almacenamos en el navegador
         localStorage.setItem('tareas', JSON.stringify(this.tareas));
     }
 
+
+
     // =========================
-    // Cargar tareas desde localStorage
+    // CARGAR DESDE LOCALSTORAGE
     // =========================
+
     cargarTareas() {
+
+        // Recuperamos datos guardados
         const guardadas = JSON.parse(localStorage.getItem('tareas'));
+
         if (guardadas) {
-            // Creamos nuevas instancias de Tarea a partir de los datos guardados
+
+            // Convertimos los objetos planos (JSON)
+            // nuevamente en instancias reales de Tarea
             this.tareas = guardadas.map(t => {
+
+                // Creamos nueva instancia
                 const tarea = new Tarea(t.nombre);
-                tarea.id = t.id; // Mantenemos el ID original
-                this.nombresTareas.add(t.nombre.toLowerCase()); // También añadimos los nombres al Set
+
+                // Restauramos el ID original
+                tarea.id = t.id;
+
+                // Añadimos el nombre al Set para mantener control de duplicados
+                this.nombresTareas.add(t.nombre.toLowerCase());
+
                 return tarea;
             });
         }

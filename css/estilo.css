@@ -1,59 +1,55 @@
 /* ================================
-   Estilo general de la página
+   ESTILO GENERAL DE LA PÁGINA
    ================================ */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(to right, #f0f4f8, #d9e2ec);
-    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente legible y moderna */
+    background: linear-gradient(to right, #f0f4f8, #d9e2ec);      /* Degradado suave de fondo */
+    color: #333;                                                    /* Color de texto principal */
     margin: 0;
     padding: 20px;
-    text-align: center; /* Para centrar título y elementos del body */
+    text-align: center; /* Centra títulos y elementos principales */
 }
 
 h1 {
     font-size: 2.2em;
     color: #1f3a93;
-    margin: 0 0 20px 0; /* Margen inferior para separar del header */
+    margin: 0 0 20px 0; /* Separación inferior del header */
 }
 
+
+
 /* ================================
-   Header: título y botón modo
+   HEADER: TÍTULO Y BOTÓN MODO
    ================================ */
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex;                   /* Layout flexible */
+    justify-content: space-between;  /* Separar título y botón */
+    align-items: center;             /* Centrar verticalmente */
     margin-bottom: 20px;
     max-width: 550px;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: auto;              /* Centrar horizontalmente */
 }
 
-/* Botón modo oscuro lateral */
+/* Botón de modo oscuro */
 #botonModo {
     padding: 10px 20px;
     font-weight: bold;
     border: none;
     border-radius: 12px;
     cursor: pointer;
-    background: linear-gradient(45deg, #ff7e5f, #feb47b);
+    background: linear-gradient(45deg, #ff7e5f, #feb47b); /* Degradado llamativo */
     color: white;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     transition: all 0.3s ease;
 }
+#botonModo:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0,0,0,0.4); }
+#botonModo:active { transform: translateY(0); box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
 
-#botonModo:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
-}
 
-#botonModo:active {
-    transform: translateY(0);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
 
 /* ================================
-   Formulario de añadir tareas
+   FORMULARIO DE AÑADIR TAREAS
    ================================ */
 form {
     display: flex;
@@ -61,7 +57,7 @@ form {
     margin-bottom: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     border-radius: 8px;
-    overflow: hidden;
+    overflow: hidden; /* Evita que bordes del input sobresalgan */
 }
 
 form input[type="text"] {
@@ -81,40 +77,37 @@ form button {
     cursor: pointer;
     transition: all 0.3s ease;
 }
+form button:hover { background-color: #005fa3; transform: scale(1.05); }
 
-form button:hover {
-    background-color: #005fa3;
-    transform: scale(1.05);
-}
+
 
 /* ================================
-   Campo de búsqueda
+   CAMPO DE BÚSQUEDA
    ================================ */
 #buscarTarea {
     display: block;
-    margin: 0 auto 30px auto;
+    margin: 0 auto 30px auto; /* Centrado y espacio inferior */
     padding: 12px;
     width: 350px;
-    border: none; /* Quitamos borde para que coincida con el estilo oscuro */
+    border: none;
     border-radius: 10px;
     outline: none;
     font-size: 1em;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* Mismo estilo que li */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     transition: all 0.3s ease;
 }
+#buscarTarea:focus { box-shadow: 0 6px 15px rgba(0,0,0,0.12); }
 
-#buscarTarea:focus {
-    box-shadow: 0 6px 15px rgba(0,0,0,0.12);
-}
+
 
 /* ================================
-   Lista de tareas
+   LISTA DE TAREAS
    ================================ */
 ul {
-    list-style: none;
+    list-style: none;     /* Quitar viñetas */
     padding: 0;
     max-width: 550px;
-    margin: 0 auto;
+    margin: 0 auto;       /* Centrado horizontal */
 }
 
 li {
@@ -128,14 +121,12 @@ li {
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     transition: all 0.3s ease;
 }
+li:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0,0,0,0.12); }
 
-li:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.12);
-}
+
 
 /* ================================
-   Botones de editar y eliminar
+   BOTONES DE EDITAR Y ELIMINAR
    ================================ */
 li button {
     padding: 8px 16px;
@@ -146,29 +137,20 @@ li button {
     transition: all 0.3s ease;
 }
 
-li button:first-of-type {
-    background-color: #f39c12;
-    color: white;
-}
+li button:first-of-type { background-color: #f39c12; color: white; } /* Editar */
+li button:last-of-type  { background-color: #e74c3c; color: white; } /* Eliminar */
+li button:hover { transform: scale(1.05); opacity: 0.9; }
 
-li button:last-of-type {
-    background-color: #e74c3c;
-    color: white;
-}
 
-li button:hover {
-    transform: scale(1.05);
-    opacity: 0.9;
-}
 
 /* ================================
-   Botón exportar JSON
+   BOTÓN EXPORTAR JSON
    ================================ */
 .boton-exportar {
     padding: 12px 25px;
     font-weight: bold;
     font-size: 1em;
-    background: linear-gradient(45deg, #6a11cb, #2575fc); /* degradado llamativo */
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
     color: white;
     border: none;
     border-radius: 20px;
@@ -176,29 +158,22 @@ li button:hover {
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     transition: all 0.3s ease;
     margin: 10px auto;
-    display: block; /* centrar en la página */
+    display: block; /* Centrado en la página */
 }
+.boton-exportar:hover { transform: translateY(-2px) scale(1.05); box-shadow: 0 6px 15px rgba(0,0,0,0.4); opacity: 0.9; }
+.boton-exportar:active { transform: translateY(0) scale(1); box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
 
-.boton-exportar:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
-    opacity: 0.9;
-}
 
-.boton-exportar:active {
-    transform: translateY(0) scale(1);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
 
 /* ================================
-   Modo oscuro
+   MODO OSCURO
    ================================ */
 body.dark-mode {
-    background: #121212;
-    color: #f5f5f5;
+    background: #121212; /* Fondo oscuro */
+    color: #f5f5f5;     /* Texto claro */
 }
 
-/* Tareas y inputs en modo oscuro */
+/* Tareas e inputs en modo oscuro */
 body.dark-mode li,
 body.dark-mode #nombreTarea,
 body.dark-mode #buscarTarea {
@@ -209,12 +184,14 @@ body.dark-mode #buscarTarea {
 
 /* Botones dentro de tareas en modo oscuro */
 body.dark-mode li button:first-of-type { background-color: #f39c12; color: white; }
-body.dark-mode li button:last-of-type { background-color: #e74c3c; color: white; }
+body.dark-mode li button:last-of-type  { background-color: #e74c3c; color: white; }
 
-/* Contenedor de acciones de cada tarea */
+/* ================================
+   CONTENEDOR DE ACCIONES DE CADA TAREA
+   ================================ */
 .acciones-tarea {
-  display: flex;
-  justify-content: flex-end; /* Empuja los botones a la derecha */
-  align-items: center;       /* Centra verticalmente con el texto */
-  gap: 0.5rem;               /* Espacio entre botones */
+    display: flex;                 /* Layout horizontal */
+    justify-content: flex-end;     /* Botones alineados a la derecha */
+    align-items: center;           /* Centrado vertical con texto */
+    gap: 0.5rem;                   /* Espacio entre botones */
 }
